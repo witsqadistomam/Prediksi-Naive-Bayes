@@ -8,33 +8,33 @@ $jumFalse = $obj->sumFalse();
 $jumData = $obj->sumData();
 
 $a1 = $_POST['umur'];
-$a2 = $_POST['tinggi_badan'];
-$a3 = $_POST['berat_badan'];
+$a2 = $_POST['role'];
+$a3 = $_POST['pemilihan_item'];
 $a4 = $_POST['status_kesehatan'];
-$a5 = $_POST['pendidikan'];
+$a5 = $_POST['skill'];
 
 //TRUE
 $umur = $obj->probUmur($a1,1);
-$tinggi = $obj->probTinggi($a2,1);
-$bb = $obj->probBeratB($a3,1);
+$role = $obj->proRole($a2,1);
+$it = $obj->probItem($a3,1);
 $kesehatan = $obj->probKesehatan($a4,1);
-$pendidikan = $obj->probPendidikan($a5,1);
+$skill = $obj->probSkill($a5,1);
 
 //FALSE
 $umur2 = $obj->probUmur($a1,0);
-$tinggi2 = $obj->probTinggi($a2,0);
-$bb2 = $obj->probBeratB($a3,0);
+$role2 = $obj->probRole($a2,0);
+$it2 = $obj->probItem($a3,0);
 $kesehatan2 = $obj->probKesehatan($a4,0);
-$pendidikan2 = $obj->probPendidikan($a5,0);
+$skill2 = $obj->probSkill($a5,0);
 
 //result
-$paT = $obj->hasilTrue($jumTrue,$jumData,$umur,$tinggi,$bb,$kesehatan,$pendidikan);
-$paF = $obj->hasilFalse($jumTrue,$jumData,$umur2,$tinggi2,$bb2,$kesehatan2,$pendidikan2);
+$paT = $obj->hasilTrue($jumTrue,$jumData,$umur,$role,$it,$kesehatan,$skill);
+$paF = $obj->hasilFalse($jumTrue,$jumData,$umur2,$role2,$it2,$kesehatan2,$skill2);
 
-if($a2 == "kt"){
-  $a2 = "Kurang Tinggi";
-}else if($a2 == "st"){
-  $a2 = "Sangat Tinggi";
+if($a2 == "mm"){
+  $a2 = "Marksman";
+}else if($a2 == "tk"){
+  $a2 = "Tank / Assassin";
 }
 
 echo "
@@ -96,13 +96,13 @@ echo "<br>
   </tr>
   <tr>
     <td>Role</td>
-    <td>$tinggi / $jumTrue</td>
-    <td>$tinggi2 / $jumFalse</td>
+    <td>$role / $jumTrue</td>
+    <td>$role2 / $jumFalse</td>
   </tr>
   <tr>
     <td>Pemilihan Item</td>
-    <td>$bb / $jumTrue</td>
-    <td>$bb2 / $jumFalse</td>
+    <td>$it / $jumTrue</td>
+    <td>$it2 / $jumFalse</td>
   </tr>
   <tr>
     <td>Status Kesehatan</td>
@@ -111,8 +111,8 @@ echo "<br>
   </tr>
   <tr>
     <td>Micro dan Macro</td>
-    <td>$pendidikan / $jumTrue</td>
-    <td>$pendidikan2 / $jumFalse</td>
+    <td>$skill / $jumTrue</td>
+    <td>$skill2 / $jumFalse</td>
   </tr>
 </table>
 ";

@@ -82,21 +82,21 @@
 
           <div class="form-group">
             <label for="umur">Role :</label>
-            <select name="tinggi" id="tinggi" class="form-control selBox" required="required">
+            <select name="role" id="role" class="form-control selBox" required="required">
                 <option value="" disabled selected>-- pilih role --</option>
-                <option value="kt">Marksman/Gold Lane</option>
-                <option value="ideal">Mage/Exp Lane</option>
-                <option value="st">Tank/Assasin</option>
+                <option value="mm">Marksman/Gold Lane</option>
+                <option value="mg">Mage/Exp Lane</option>
+                <option value="tk">Tank/Assasin</option>
             </select>
           </div>
 
           <div class="form-group">
             <label for="umur">Pemilihan item :</label>
-            <select name="beratB" id="beratB" class="form-control selBox" required="required">
+            <select name="item" id="item" class="form-control selBox" required="required">
                       <option value="" disabled selected>-- pilih pemilihan item --</option>
-                      <option value="kurus">Belum Mahir</option>
-                      <option value="ideal">Mahir</option>
-                      <option value="tambun">Pro</option>
+                      <option value="amt">Belum Mahir</option>
+                      <option value="int">Mahir</option>
+                      <option value="pro">Pro</option>
                   </select>
           </div>
 
@@ -111,11 +111,11 @@
 
           <div class="form-group">
             <label for="umur">Micro dan Macro :</label>
-            <select name="pendidikan" id="pendidikan" class="form-control selBox" required="required">
+            <select name="skill" id="skill" class="form-control selBox" required="required">
                       <option value="" disabled selected>-- pilih Micro dan Macro --</option>
-                      <option value="sma">Belum Mahir</option>
-                      <option value="smk">Mahir</option>
-                      <option value="s1">Pro</option>
+                      <option value="bg">Belum Mahir</option>
+                      <option value="rg">Mahir</option>
+                      <option value="pr">Pro</option>
                   </select>
           </div>
 
@@ -187,30 +187,30 @@
   function simulasi()
   {
     var umur = $("#umur").val();
-    var tinggi_badan = $("#tinggi").val();
-    var berat_badan = $("#beratB").val();
+    var role = $("#role").val();
+    var pemilihan_item = $("#item").val();
     var status_kesehatan = $("#kesehatan").val();
-    var pendidikan = $("#pendidikan").val();
+    var skill = $("#skill").val();
 
     //validasi
     var um = document.getElementById("umur");
-    var tb = document.getElementById("tinggi");
-    var bb = document.getElementById("beratB");
+    var rl = document.getElementById("role");
+    var it = document.getElementById("item");
     var sk = document.getElementById("kesehatan");
-    var pp = document.getElementById("pendidikan");
+    var sl = document.getElementById("skill");
 
     if(um.selectedIndex == 0){
       alert("Umur Tidak Boleh Kosong");
       return false;
     }
 
-    if(tb.selectedIndex == 0){
-      alert("Tinggi Badan Tidak Boleh Kosong");
+    if(rl.selectedIndex == 0){
+      alert("Role Tidak Boleh Kosong");
       return false;
     }
 
-    if(bb.selectedIndex == 0){
-      alert("Berat Badan Tidak Boleh Kosong");
+    if(it.selectedIndex == 0){
+      alert("Item Tidak Boleh Kosong");
       return false;
     }
 
@@ -219,8 +219,8 @@
       return false;
     }
 
-    if(pp.selectedIndex == 0){
-      alert("Pendidikan Tidak Boleh Kosong");
+    if(sl.selectedIndex == 0){
+      alert("Skill Tidak Boleh Kosong");
       return false;
     }
 
@@ -230,7 +230,7 @@
         url :'simulasi.php',
         type : 'POST',
         dataType : 'html',
-        data : {umur : umur , tinggi_badan : tinggi_badan , berat_badan : berat_badan , status_kesehatan : status_kesehatan , pendidikan : pendidikan},
+        data : {umur : umur , role : role , item : item , status_kesehatan : status_kesehatan , skill : skill},
         success : function(data){
           document.getElementById("hasilSIM").innerHTML = data;
         },

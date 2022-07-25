@@ -1,7 +1,7 @@
 <?php
 class Bayes
 {
-  private $pegawai = "data.json";
+  private $player = "data.json";
   // private $jumTrue = 0;
   // private $jumFalse = 0;
   // private $jumData = 0;
@@ -16,7 +16,7 @@ class Bayes
   =================================================================*/
   function sumTrue()
   {
-    $data = file_get_contents($this->pegawai);
+    $data = file_get_contents($this->player);
     $hasil = json_decode($data,true);
 
     $t = 0;
@@ -32,7 +32,7 @@ class Bayes
 
   function sumFalse()
   {
-    $data = file_get_contents($this->pegawai);
+    $data = file_get_contents($this->player);
     $hasil = json_decode($data,true);
 
     $t = 0;
@@ -47,7 +47,7 @@ class Bayes
 
   function sumData()
   {
-    $data = file_get_contents($this->pegawai);
+    $data = file_get_contents($this->player);
     $hasil = json_decode($data,true);
     return count($hasil);
   }
@@ -59,7 +59,7 @@ class Bayes
   =================================================================*/
   function probUmur($umur,$status)
   {
-    $data = file_get_contents($this->pegawai);
+    $data = file_get_contents($this->player);
     $hasil = json_decode($data,true);
 
     $t = 0;
@@ -73,48 +73,48 @@ class Bayes
     return $t;
   }
 
-  function probTinggi($tinggi,$status)
+  function probRole($role,$status)
   {
-    $data = file_get_contents($this->pegawai);
+    $data = file_get_contents($this->player);
     $hasil = json_decode($data,true);
 
     $t = 0;
     foreach ($hasil as $hasil) {
-      if($hasil['tinggi'] == $tinggi && $hasil['status'] == $status){
+      if($hasil['role'] == $role && $hasil['status'] == $status){
         $t += 1;
-      }else if($hasil['tinggi'] == $tinggi && $hasil['status'] == $status){
+      }else if($hasil['role'] == $role && $hasil['status'] == $status){
         $t +=1;
       }
     }
     return $t;
   }
 
-  function probBeratB($bb,$status)
+  function probItem($it,$status)
   {
-    $data = file_get_contents($this->pegawai);
+    $data = file_get_contents($this->player);
     $hasil = json_decode($data,true);
 
     $t = 0;
     foreach ($hasil as $hasil) {
-      if($hasil['berat_badan'] == $bb && $hasil['status'] == $status){
+      if($hasil['pemilihan_item'] == $it && $hasil['status'] == $status){
         $t += 1;
-      }else if($hasil['berat_badan'] == $bb && $hasil['status'] == $status){
+      }else if($hasil['pemilihan_item'] == $it && $hasil['status'] == $status){
         $t +=1;
       }
     }
     return $t;
   }
 
-  function probPendidikan($pendidikan,$status)
+  function probSkill($skill,$status)
   {
-    $data = file_get_contents($this->pegawai);
+    $data = file_get_contents($this->player);
     $hasil = json_decode($data,true);
 
     $t = 0;
     foreach ($hasil as $hasil) {
-      if($hasil['pendidikan'] == $pendidikan && $hasil['status'] == $status){
+      if($hasil['skill'] == $skill && $hasil['status'] == $status){
         $t += 1;
-      }else if($hasil['pendidikan'] == $pendidikan && $hasil['status'] == $status){
+      }else if($hasil['skill'] == $skill && $hasil['status'] == $status){
         $t +=1;
       }
     }
@@ -123,7 +123,7 @@ class Bayes
 
   function probKesehatan($kesehatan,$status)
   {
-    $data = file_get_contents($this->pegawai);
+    $data = file_get_contents($this->player);
     $hasil = json_decode($data,true);
 
     $t = 0;

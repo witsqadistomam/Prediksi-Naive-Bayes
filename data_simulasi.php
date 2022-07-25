@@ -83,12 +83,36 @@
                 $stt = "ditolak";
               }
 
-              if($hasil['tinggi'] == "ideal"){
-                $tinggi = "normal";
-              }else if($hasil['tinggi'] == "kt"){
-                $tinggi = "kurang tinggi";
-              }else if($hasil['tinggi'] == "st"){
-                $tinggi = "sangat tinggi";
+              if($hasil['role'] == "mg"){
+                $role = "mage / exp lane";
+              }else if($hasil['role'] == "mm"){
+                $role = "marksman / gold lane";
+              }else if($hasil['role'] == "tk"){
+                $role = "tank / assassin";
+              }
+              
+              if($hasil['pemilihan_item'] == "amt"){
+                $pemilihan_item = "Belum Mahir";
+              }else if($hasil['pemilihan_item'] == "int"){
+                $pemilihan_item = "Mahir";
+              }else if($hasil['pemilihan_item'] == "pro"){
+                $pemilihan_item = "Pro";
+              }
+              
+              if($hasil['skill'] == "bg"){
+                $skill = "Belum Mahir";
+              }else if($hasil['skill'] == "rg"){
+                $skill = "Mahir";
+              }else if($hasil['skill'] == "pr"){
+                $skill = "Pro";
+              }
+              
+              if($hasil['skill'] == "bg"){
+                $skill = "Belum Mahir";
+              }else if($hasil['skill'] == "rg"){
+                $skill = "Mahir";
+              }else if($hasil['skill'] == "pr"){
+                $skill = "Pro";
               }
 
               if($hasil['kesehatan'] == "sehat"){
@@ -101,9 +125,9 @@
             <tr>
               <td><?php echo $no; ?></td>
               <td><?php echo $hasil['umur']; ?></td>
-              <td><?php echo $hasil['berat_badan']; ?></td>
-              <td><?php echo $hasil['pendidikan']; ?></td>
-              <td><?php echo $tinggi ?></td>
+              <td><?php echo $pemilihan_item ?></td>
+              <td><?php echo $skill ?></td>
+              <td><?php echo $role ?></td>
               <td><?php echo $sehat; ?></td>
               <td><?php 
               if($stt == "diterima"){
